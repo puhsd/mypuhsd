@@ -1,0 +1,26 @@
+<%= form_for(vendor) do |f| %>
+  <% if vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+      <ul>
+      <% vendor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" >
+    <%= f.hidden_field :vendor_id, :value => vendor.id%>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :logo, as: :file %>
+    <p class="help-block">Upload new logo</p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Upload New Logo', :class => 'btn btn-default'  %>
+  </div>
+<% end %>

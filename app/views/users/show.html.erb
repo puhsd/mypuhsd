@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title"><%= @user.firstname %> <%= @user.lastname %></h4>
+    <h6 class="card-subtitle text-muted"><%= @user.access_level %></h6>
+  </div>
+  <div class="card-block">
+    <p class="card-text"><strong>Email:</strong>  <%= @user.email %></p>
+    <div class="text-xs-center">
+      <% if policy(User).edit? %>
+        <%= link_to 'Edit', edit_user_path(@user) , :class => 'btn btn-primary '%> |
+        <%= link_to 'Back', users_path , :class => 'btn btn-primary '%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<h1>Passwords</h1>
+
+<hr/>
+
+
+
+<div class="card-group">
+  <% @user.passwords.each do |password| %>
+    <div class="card text-xs-center col-xs-12 col-sm-12 col-md-6 col-lg-3" >
+      <!-- Image -->
+      <img src="<%= password.vendor.logo %>" class="img-fluid m-x-auto" alt="logo" >
+
+      <!-- Heading -->
+      <div class="card-block">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= password.vendor.id %>" aria-expanded="true" aria-controls="collapse<%= password.vendor.id %>">
+
+          <h4 class="card-title text-xs-center"><%= password.vendor.title %></h4>
+        </a>
+      <!-- <h6 class="card-subtitle text-muted"></h6> -->
+      </div>
+
+      <div id="collapse<%= password.vendor.id %>" class="card-block panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+
+      <!-- Text Content -->
+      <p class="card-text">
+      <strong>Username:</strong> <%= password.username %><BR/>
+      <strong>Password:</strong> <%= password.password %>
+      </p>
+      <a href="<%= password.vendor.link %>" class="btn btn-primary" target="_blank">Web Link</a>
+    </div>
+
+    </div>
+
+  <% end %>
+</div>

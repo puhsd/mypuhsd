@@ -1,0 +1,28 @@
+<%= form_for(upload) do |f| %>
+  <% if upload.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+      <ul>
+      <% upload.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" >
+    <%= f.label :vendor_id %>
+    <%= f.hidden_field :vendor_id, :value => upload.vendor_id%>
+    <%= upload.vendor.title if upload.vendor != nil %>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :file, as: :file %>
+    <p class="help-block">CSV File with passwords</p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create Upload', :class => 'btn btn-default'  %>
+  </div>
+<% end %>

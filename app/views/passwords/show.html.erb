@@ -1,0 +1,24 @@
+<p>
+  <strong>User:</strong>
+  <%= @password.user.displayname %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @password.vendor.title %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @password.username %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @password.password %>
+</p>
+
+<% if policy(Password).edit? %>
+  <%= link_to 'Edit', edit_password_path(@password) %> |
+  <%= link_to 'Back', passwords_path %>
+<% end %>

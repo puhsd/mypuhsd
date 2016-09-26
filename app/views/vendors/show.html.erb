@@ -1,0 +1,37 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @vendor.title %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <a href="<%= @vendor.link %>"><%= @vendor.link %></a>
+</p>
+
+<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
+<%= link_to 'Back', vendors_path %>
+
+<hr/>
+
+
+<h3>Logo</h3>
+<div class="row">
+
+    <div class="col-xs-6">
+        <img src="<%= @vendor.logo %>" alt="Logo" />
+    </div>
+
+  <div class="col-xs-6">
+    <%= render 'picture_form' , vendor: @vendor %>
+  </div>
+
+
+</div>
+
+
+<hr/>
+
+<h3>Passwords</h3>
+
+<%= render 'uploads/form' , upload: @upload %>
