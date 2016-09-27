@@ -24,7 +24,7 @@ set :deploy_to, '/home/deploy/apps/mypuhsd'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, '.env', 'config/database.yml', 'config/secrets.yml', 'config/ldap.yml'
+append :linked_files, '.env', 'config/database.yml', 'config/secrets.yml', 'config/ldap.yml', 'config/local_env.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'

@@ -37,6 +37,7 @@ gem "pundit"
 gem 'net-ldap', :git => 'git://github.com/ruby-ldap/ruby-net-ldap.git'
 gem "omniauth-google-oauth2"
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
+gem 'rmagick'
 
 
 group :development, :test do
