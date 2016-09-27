@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913220550) do
+ActiveRecord::Schema.define(version: 20160927233450) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
 
   create_table "passwords", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160913220550) do
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_passwords_on_user_id"
-    t.index ["vendor_id"], name: "index_passwords_on_vendor_id"
+    t.index ["user_id"], name: "index_passwords_on_user_id", using: :btree
+    t.index ["vendor_id"], name: "index_passwords_on_vendor_id", using: :btree
   end
 
   create_table "uploads", force: :cascade do |t|
@@ -33,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160913220550) do
     t.datetime "file_updated_at"
     t.integer  "status_code",       default: 0,  null: false
     t.string   "comment",           default: "", null: false
-    t.index ["vendor_id"], name: "index_uploads_on_vendor_id"
+    t.index ["vendor_id"], name: "index_uploads_on_vendor_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,7 +59,11 @@ ActiveRecord::Schema.define(version: 20160913220550) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "objectguid"
-    t.index ["access_level"], name: "index_users_on_access_level"
+    t.string   "username"
+    t.string   "slug"
+    t.index ["access_level"], name: "index_users_on_access_level", using: :btree
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", using: :btree
   end
 
   create_table "vendors", force: :cascade do |t|

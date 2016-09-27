@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :uploads
   resources :passwords
-  resources :users
+  resources :users, :constraints => { :id => /.*/ }
   resources :vendors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

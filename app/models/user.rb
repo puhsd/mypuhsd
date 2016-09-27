@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :passwords
   LDAP_CONFIG = YAML.load(ERB.new(File.read("#{Rails.root}/config/ldap.yml")).result)[Rails.env]
 
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
   def self.ldap_connection(username = nil, password = nil)
     # ldap = Net::LDAP.new
@@ -52,6 +54,7 @@ class User < ApplicationRecord
 
       user.firstname = (entry.respond_to?(:givenname) ? entry["givenname"].first : '')
       user.lastname = (entry.respond_to?(:sn) ? entry["sn"].first : '' )
+      user.username = (entry.respond_to?(:sAMAccountName) ? entry["sAMAccountName"].first : '')
       # user.access_level = 0 if user.access_level > 0
 
       user.access_level = (entry["dn"].first.match(',OU=Staff,OU=Accounts,DC=PUHSD,DC=ORG') ? 1 : 0 ) if !user.admin?

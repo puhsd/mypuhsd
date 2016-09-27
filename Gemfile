@@ -38,11 +38,10 @@ gem 'net-ldap', :git => 'git://github.com/ruby-ldap/ruby-net-ldap.git'
 gem "omniauth-google-oauth2"
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'rmagick'
+gem 'friendly_id'
 
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Use Puma as the app server
   gem 'puma', '~> 3.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
