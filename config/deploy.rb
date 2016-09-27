@@ -27,7 +27,7 @@ set :deploy_to, '/home/deploy/apps/mypuhsd'
 append :linked_files, '.env', 'config/database.yml', 'config/secrets.yml', 'config/ldap.yml', 'config/local_env.yml'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'non-public'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

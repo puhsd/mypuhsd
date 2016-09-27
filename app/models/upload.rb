@@ -2,7 +2,8 @@ class Upload < ApplicationRecord
   belongs_to :vendor
   enum status_code: { uploaded: 0, processing: 1, completed: 2, canceled: 3,  error: 4}
 
-  has_attached_file :file
+  has_attached_file :file, :path => "#{Rails.root}/non-public/uploads/:attachment/:id/:style/:basename.:extension",
+                            :url => '/downloads/:id'
   validates_attachment_content_type :file, :content_type => ['text/csv','text/comma-separated-values','text/csv','application/csv','application/excel','application/vnd.ms-excel','application/vnd.msexcel','text/anytext','text/plain']
 
   validates :file, presence: true

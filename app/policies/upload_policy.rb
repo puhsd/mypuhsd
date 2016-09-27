@@ -31,4 +31,8 @@ class UploadPolicy < ApplicationPolicy
     user.admin? if user
   end
 
+  def download?
+    user.admin? if user
+  end
+
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     get 'import', :on => :collection
   end
-  
+
   resources :uploads
   resources :passwords
   resources :users
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  get '/downloads/:id', to: 'uploads#download'
 
   resources :sessions, only: [:create, :destroy]
 

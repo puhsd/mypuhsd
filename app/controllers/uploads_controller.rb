@@ -80,6 +80,10 @@ class UploadsController < ApplicationController
     end
   end
 
+  def download
+    authorize Upload, :download?
+    send_file Upload.find(params[:id]).file.path
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
