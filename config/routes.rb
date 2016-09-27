@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get 'login', to: 'login#index'
 
+
+  resources :users do
+    get 'import', :on => :collection
+  end
+  
   resources :uploads
   resources :passwords
   resources :users
@@ -21,9 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users do
-    post 'import', :on => :collection
-  end
+
 
   # root 'users#show'
   root 'login#index'
