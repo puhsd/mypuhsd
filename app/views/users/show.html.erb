@@ -26,7 +26,7 @@
   <% @user.passwords.each do |password| %>
     <div class="card text-xs-center col-xs-12 col-sm-12 col-md-6 col-lg-3" >
       <!-- Image -->
-      <img src="<%= password.vendor.logo %>" class="img-fluid m-x-auto" alt="logo" >
+      <img src="<%= password.vendor.logo(:thumb) %>" class="img-fluid m-x-auto" alt="logo" >
 
       <!-- Heading -->
       <div class="card-block">
@@ -45,7 +45,7 @@
       <strong>Username:</strong> <%= password.username %><BR/>
       <strong>Password:</strong> <%= password.password %>
       </p>
-      <a href="<%= password.vendor.link(:thumb) %>" class="btn btn-primary" target="_blank">Web Link</a>
+      <a href="<%= password.vendor.link %>" class="btn btn-primary" target="_blank">Web Link</a>
     </div>
 
     </div>
