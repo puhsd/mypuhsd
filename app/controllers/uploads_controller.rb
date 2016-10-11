@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   def index
     authorize Upload, :index?
-    @uploads = Upload.all
+    @uploads = Upload.all.order('created_at DESC').limit(100)
   end
 
   # GET /uploads/1
