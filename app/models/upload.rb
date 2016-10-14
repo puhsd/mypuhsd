@@ -29,7 +29,6 @@ class Upload < ApplicationRecord
 
   def uploadPasswords()
     begin
-      puts self.id
       self.update_columns(status_code: 1)
       require 'csv'
       CSV.foreach(self.file.path) do |row|

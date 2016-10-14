@@ -21,7 +21,7 @@
             <td><%= upload.status_code %></td>
             <td><%= upload.comment %></td>
             <td><%= link_to 'Show', upload %></td>
-            <td><%= link_to 'Re-run', rerun_upload_path(upload), :method => :put, :confirm => "Are you sure?" %></td>
+            <td><%= link_to 'Re-run', rerun_upload_path(upload), :method => :put, data: { :confirm => "Are you sure you want to re-run the import?"} %></td>
             <td><%= link_to 'Destroy', upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>

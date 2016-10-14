@@ -15,7 +15,7 @@
     <%= f.hidden_field :vendor_id, :value => upload.vendor_id%>
     <%= f.label 'Vendor', :class => " col-form-label", :for => "title" %>
 
-    <label class="form-control" id="title"><%= @vendor.title  if upload.vendor != nil %></label>
+    <label class="form-control" id="title"><%= upload.vendor.title  if upload.vendor != nil %></label>
 
 
   </div>

@@ -14,6 +14,13 @@
       <nav class="navbar navbar-light bg-faded">
             <a class="navbar-brand" href="/">MyPUHSD</a>
 
+            <% if current_user && current_user.admin? %>
+              <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+                &#9776;
+              </button>
+            <% end %>
+            <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar2">
+
             <ul class="nav navbar-nav">
               <li class="nav-item">
                 <% if policy(User).index? %>
@@ -37,20 +44,34 @@
               </li>
             </ul>
 
+            <ul class="nav navbar-nav pull-xs-right " >
+              <li class="nav-item  hidden-sm-down">
+                <% if current_user %>
+                  <span class="hidden-md-down">Signed in as <strong><%= current_user.firstname %></strong>!</span>
+                  <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn" %>
+                <% else %>
+                  <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: "btn" %>
+                <% end %>
+              </li>
+            </ul>
 
-          </div>
-          <ul class="nav navbar-nav pull-xs-right" >
-            <li class="nav-item">
-              <% if current_user %>
-                Signed in as <strong><%= current_user.firstname %></strong>!
-                <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn" %>
-              <% else %>
-                <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: "btn" %>
-              <% end %>
-          </li>
-          </ul>
 
         </div>
+
+
+          <ul class="nav navbar-nav pull-xs-right " >
+            <li class="nav-item hidden-md-up">
+              <% if current_user %>
+                <a id="sign_out" class="btn" href="/signout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+              <% else %>
+                <a id="sign_in" class="btn" href="/auth/google_oauth2"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+              <% end %>
+            </li>
+          </ul>
+
+
+
+
 
       </nav>
     </header>
@@ -65,6 +86,7 @@
           <%= message %>
         <% end %>
       <% end %>
+
 
       <%= yield %>
     </div>
