@@ -1,12 +1,19 @@
 class User < ApplicationRecord
   enum access_level: { student: 0, staff: 1, admin: 2 }
 
+  before_destroy :cleanup
+
   validates :email, uniqueness: true
   has_many :passwords
   LDAP_CONFIG = YAML.load(ERB.new(File.read("#{Rails.root}/config/ldap.yml")).result)[Rails.env]
 
   extend FriendlyId
   friendly_id :username, use: :slugged
+
+  def cleanup
+    Password.where(:user_id => self.id).destroy_all
+  end
+
 
   def self.ldap_connection(username = nil, password = nil)
     # ldap = Net::LDAP.new
@@ -33,6 +40,12 @@ class User < ApplicationRecord
     # end
     return ldap
   end
+
+  def self.start_import
+    #  File.open("#{Rails.root}/tmp/ldapsync.ini", "w")
+     system "rake import_user_from_ldap &"
+  end
+
 
   def self.import_from_ldap(username = nil)
 

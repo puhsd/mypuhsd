@@ -1,37 +1,84 @@
+<h3>Info</h3>
+<div class="card " style="margin-top:10px;">
+  <div class="card-header text-xs-center">
+    Vendor
+  </div>
+  <div class="card-block">
 
-<p>
-  <strong>Title:</strong>
-  <%= @vendor.title %>
-</p>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
+      <div class="col-xs-10">
+        <label class="form-control" id="example-text-input"><%= @vendor.title %></label>
 
-<p>
-  <strong>Link:</strong>
-  <a href="<%= @vendor.link %>"><%= @vendor.link %></a>
-</p>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Link</label>
+
+      <div class="col-xs-10  ">
+        <label class="form-control" id="example-text-input"><a href="<%= @vendor.link %>"><%= @vendor.link %></a></label>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="card-footer text-muted text-xs-center">
+    <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
+    <%= link_to 'Back', vendors_path %>
+  </div>
+</div>
+
+
 
 <hr/>
 
 
 <h3>Logo</h3>
+
 <div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="card  text-xs-center">
+      <div class="card-header text-xs-center">
+        Preview
+      </div>
+      <div class="card-block">
+        <img src="<%= @vendor.logo.url(:medium) %>" alt="<%= @vendor.title %> Logo" />
 
-    <div class="col-xs-6">
-        <img src="<%= @vendor.logo.url(:medium) %>" alt="Logo" />
+      </div>
+
+      <div class="card-footer text-muted text-xs-center">
+        <div class=""><%= link_to 'Remove Logo', remove_logo_vendor_path(@vendor) %></div>
+      </div>
     </div>
-
-  <div class="col-xs-6">
-    <%= render 'picture_form' , vendor: @vendor %>
   </div>
 
-
+  <div class=" col-xs-12 col-md-6">
+    <div class="card">
+      <div class="card-header text-xs-center">
+        Logo Form
+      </div>
+      <div class="card-block">
+        <%= render 'picture_form' , vendor: @vendor %>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <hr/>
 
-<h3>Passwords</h3>
+<h3 class="clearfix">Passwords</h3>
 
-<%= render 'uploads/form' , upload: @upload %>
+
+<div class="card ">
+  <div class="card-header text-xs-center">
+    Passwords Form
+  </div>
+  <div class="card-block">
+    <%= render 'uploads/form' , upload: @upload %>
+  </div>
+</div>

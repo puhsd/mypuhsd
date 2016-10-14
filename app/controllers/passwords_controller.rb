@@ -5,7 +5,7 @@ class PasswordsController < ApplicationController
   # GET /passwords.json
   def index
     authorize Password, :index?
-    @passwords = Password.all
+    @passwords = Password.all.order('created_at DESC').limit(100)
   end
 
   # GET /passwords/1

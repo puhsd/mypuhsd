@@ -28,6 +28,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :vendors do
+    member do
+
+      get 'remove_logo'
+
+    end
+  end
+
 
 
   # root 'users#show'

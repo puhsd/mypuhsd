@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  before_action :set_upload, only: [:show, :edit, :update, :destroy, :rerun]
 
   # GET /uploads
   # GET /uploads.json
@@ -71,7 +71,6 @@ class UploadsController < ApplicationController
 
   def rerun
     authorize Upload, :rerun?
-    @upload = Upload.find(params[:id])
     if @upload.rerun
       respond_to do |format|
         format.html { redirect_to uploads_url, notice: 'Upload was rerun successfully.' }

@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
   def import
     authorize User, :import?
-      if User.import_from_ldap
+      if User.start_import
         redirect_to users_url, notice: 'Successfully synchronized users with LDAP.'
       else
         redirect_to users_url, alert: 'Could not synchronize users with LDA.'

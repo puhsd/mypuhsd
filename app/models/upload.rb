@@ -10,6 +10,12 @@ class Upload < ApplicationRecord
 
   after_save :create_process
 
+  before_destroy :delete_file
+
+  def delete_file
+    Upload.find(self.id).file.destroy
+  end
+
   def create_process
 		system "rake import_vendor_info UPLOAD_ID=#{self.id} &"
 		# call_rake :import_resorces, :upload_id => self.id

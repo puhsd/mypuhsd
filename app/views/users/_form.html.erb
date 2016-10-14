@@ -11,27 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+<div class="card text-xs-center" style="margin-top:10px;">
+  <div class="card-header">
+    <%= action_name.titleize %> User
   </div>
+  <div class="card-block">
 
-  <div class="field">
-    <%= f.label :firstname %>
-    <%= f.text_field :firstname %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :email, :class => "col-xs-2 col-form-label", :for => "user[email]" %>
+      <div class="col-xs-10">
+        <%= f.text_field :email, :class => "form-control"  %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :lastname %>
-    <%= f.text_field :lastname %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :firstname, :class => "col-xs-2 col-form-label", :for => "user[firstname]" %>
+      <div class="col-xs-10">
+        <%= f.text_field :firstname, :class => "form-control"  %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :access_level %>
-    <%= f.number_field :access_level %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :lastname, :class => "col-xs-2 col-form-label", :for => "user[lastname]" %>
+      <div class="col-xs-10">
+        <%= f.text_field :lastname, :class => "form-control"  %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="form-group row">
+      <%= f.label :access_level, :class => "col-xs-2 col-form-label", :for => "user[lastname]" %>
+      <div class="col-xs-10">
+          <%= f.select(:access_level, options_for_select(User.access_levels.keys.to_a, user.access_level), {}, { :class => "form-control"}) %>
+      </div>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit :class => "btn btn-primary btn-block" %>
+    </div>
   </div>
+</div>
+
+
 <% end %>

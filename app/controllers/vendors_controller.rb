@@ -1,5 +1,5 @@
 class VendorsController < ApplicationController
-  before_action :set_vendor, only: [:show, :edit, :update, :destroy]
+  before_action :set_vendor, only: [:show, :edit, :update, :destroy, :remove_logo]
 
   # GET /vendors
   # GET /vendors.json
@@ -66,6 +66,15 @@ class VendorsController < ApplicationController
     @vendor.destroy
     respond_to do |format|
       format.html { redirect_to vendors_url, notice: 'Vendor was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def remove_logo
+    authorize Vendor, :update?
+    @vendor.remove_logo
+    respond_to do |format|
+      format.html { redirect_to @vendor, notice: 'Vendor Logo was successfully removed.' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,7 @@
-<h1>Editing User</h1>
-
+<br/>
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user , :class => 'btn btn-primary'%> |
-<%= link_to 'Back', users_path, :class => 'btn btn-primary' %>
+<div class="text-xs-center">
+  <%= link_to 'Show', @user , :class => 'btn btn-secondary'%> |
+  <%= link_to 'Back', users_path, :class => 'btn btn-secondary' %>
+</div>
