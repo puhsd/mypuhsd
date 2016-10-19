@@ -32,17 +32,19 @@ class Upload < ApplicationRecord
       self.update_columns(status_code: 1)
       require 'csv'
       CSV.foreach(self.file.path) do |row|
-        user = User.find_by_email(row[0])
+        # /user = User.find_by_email(row[0])
 
-        if user != nil
-          password = Password.where("user_id = ? AND vendor_id = ? ", user.id,self.vendor_id).first
-          password = Password.new if password == nil
-          password.vendor_id = self.vendor_id;
-          password.user_id = user.id
-          password.username = row[1]
-          password.password = row[2]
-          password.save
-        end
+        # if user != nil
+          # password = Password.where("user_id = ? AND vendor_id = ? ", user.id,self.vendor_id).first
+          # password = Password.new if password == nil
+          # password.vendor_id = self.vendor_id;
+          # password.user_id = user.id
+          # password.username = row[1]
+          # password.password = row[2]
+          # password.save
+          Password.import(self.vendor_id, row[0], row[1], row[2])
+
+        # end
 
       end
       self.update_columns(status_code: 2)
