@@ -51,6 +51,10 @@
       <strong>Password:</strong> <%= password.password %>
       </p>
       <a href="<%= password.vendor.link %>" class="btn btn-primary" target="_blank">Web Link</a>
+      <% if password.vendor.logonform != nil && password.vendor.logonform != '' %>
+        <%= ((password.vendor.logonform.sub! '{{ password }}', password.password).sub! '{{ username }}', password.username).html_safe %>
+      <% end %>
+
     </div>
 
     </div>

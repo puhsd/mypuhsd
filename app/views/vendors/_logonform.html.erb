@@ -1,0 +1,34 @@
+<%= form_for(vendor) do |f| %>
+  <% if vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+      <ul>
+      <% vendor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+    <%= f.hidden_field :vendor_id, :value => vendor.id%>
+
+
+    <div class="form-group row">
+
+      <%= f.label 'HTML Logon form', :class => " col-form-label", :for => "vendor[form]" %>
+
+        <%= f.text_area :logonform, rows: 10, :class => "form-control"  %>
+
+
+    </div>
+
+
+  <div class="actions text-xs-center">
+    <%= f.submit 'Upload Form', :class => 'btn btn-default'  %>
+  </div>
+<% end %>
