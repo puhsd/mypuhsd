@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     # authorize @user
     authorize @user, :show?
+    @showvendors = Vendor.where("showtoall = true")
     if @user == nil
       redirect_to '/'
     end
