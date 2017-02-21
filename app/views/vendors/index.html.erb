@@ -16,7 +16,7 @@
         <% @vendors.each do |vendor| %>
           <tr>
             <td><%= vendor.title %></td>
-            <td><a href="<%= vendor.link %>" target="_blank"><%= vendor.link %><a></td>
+            <td style="max-width:200px; word-wrap:break-word;"><a href="<%= vendor.link %>" target="_blank" ><%= vendor.link %><a></td>
             <td><%= link_to 'Show', vendor %></td>
             <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
             <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
