@@ -40,10 +40,10 @@
 
 
       <div class="form-group row">
-        <%= f.label :showtoall, 'Show To All', :class => "col-xs-2 ", :for => "vendor[showtoall]" %>
+        <%= f.label :showtoall, 'Show To ', :class => "col-xs-2 ", :for => "vendor[showtoall]" %>
 
         <div class="col-xs-10">
-              <%= f.check_box :showtoall, :class => "form-control"  %>
+            <%= f.select(:showto, options_for_select(Vendor.showtos.keys.to_a, vendor.showto), {}, { :class => "form-control"}) %>
         </div>
       </div>
 

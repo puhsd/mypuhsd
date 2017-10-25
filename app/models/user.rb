@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   enum access_level: { student: 0, staff: 1, admin: 2 }
 
+
+
   before_destroy :cleanup
 
   validates :email, uniqueness: true
@@ -9,6 +11,10 @@ class User < ApplicationRecord
 
   extend FriendlyId
   friendly_id :username, use: :slugged
+
+  def showto
+    User.access_levels[self.access_level]
+  end
 
   def cleanup
     Password.where(:user_id => self.id).destroy_all
@@ -87,7 +93,6 @@ class User < ApplicationRecord
 		user = User.find_by(email: auth.info.email)
 
     if user == nil then
-      puts "nil------"
       user = User.import_from_ldap(auth.info.email.split("@").first)
     end
 

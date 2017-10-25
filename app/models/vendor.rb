@@ -6,6 +6,9 @@ class Vendor < ApplicationRecord
 
   before_destroy :cleanup
 
+  enum showto: { passwords: 0, everyone: 1, students: 2, staff: 3, admin: 4 }
+
+
   def cleanup
     #remove logos
     Vendor.find(id).logo.destroy
