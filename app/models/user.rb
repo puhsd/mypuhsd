@@ -76,7 +76,7 @@ class User < ApplicationRecord
       user.username = (entry.respond_to?(:sAMAccountName) ? entry["sAMAccountName"].first : '')
       # user.access_level = 0 if user.access_level > 0
 
-      user.access_level = (entry["dn"].first.match(',OU=Staff,OU=Accounts,DC=PUHSD,DC=ORG') ? 1 : 0 ) if !user.admin?
+      user.access_level = (entry["dn"].first.match(",#{ENV['STAFF_OU']}") ? 1 : 0 ) if !user.admin?
 
 
       if user.changed? && user.email != ''
