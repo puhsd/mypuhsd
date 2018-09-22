@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="card " style="margin-top:10px;">
-  <div class="card-header text-xs-center">
+  <div class="card-header text-center">
     Upload
   </div>
   <div class="card-block">
-    <div class="form-group row" >
+    <div class="form-group" >
 
       <%= label_tag 'vendor', 'Vendor', :class => "col-xs-2 col-form-label" %>
       <div class="col-xs-10">
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="form-group row" >
+    <div class="form-group" >
 
       <%= label_tag 'created_at', 'Created at', :class => "col-xs-2  col-form-label" %>
       <div class="col-xs-10">
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
 
       <%= label_tag 'file', 'File Name', :class => "col-xs-2  col-form-label" %>
 
@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
 
       <%= label_tag 'status', 'Status', :class => "col-xs-2  col-form-label" %>
 
@@ -44,7 +44,7 @@
 
 
 
-    <div class="text-xs-center">
+    <div class="text-center">
       <%= link_to 'Destroy', @upload, method: :delete, data: { confirm: 'Are you sure you want to remove the file?' } , :class => 'btn btn-secondary'%> |
       <td><%= link_to 'Re-run', rerun_upload_path(@upload), :method => :put, data: { :confirm => "Are you sure you want to re-run the import?"}, :class => 'btn btn-secondary' %></td>
       <%= link_to 'Back', uploads_path, :class => 'btn btn-secondary' %>

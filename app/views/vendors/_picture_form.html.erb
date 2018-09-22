@@ -18,7 +18,7 @@
     <%= f.hidden_field :vendor_id, :value => vendor.id%>
 
 
-    <div class="form-group row">
+    <div class="form-group">
 
       <%= f.label 'New Logo', :class => " col-form-label", :for => "vendor[file]" %>
 
@@ -28,7 +28,7 @@
     </div>
 
 
-  <div class="actions text-xs-center">
+  <div class="actions text-center">
     <%= f.submit 'Upload New Logo', :class => 'btn btn-default'  %>
   </div>
 <% end %>

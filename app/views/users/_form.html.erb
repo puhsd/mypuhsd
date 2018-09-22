@@ -11,34 +11,34 @@
     </div>
   <% end %>
 
-<div class="card text-xs-center" style="margin-top:10px;">
+<div class="card text-center" style="margin-top:10px;">
   <div class="card-header">
     <%= action_name.titleize %> User
   </div>
   <div class="card-block">
 
-    <div class="form-group row">
+    <div class="form-group">
       <%= f.label :email, :class => "col-xs-2 col-form-label", :for => "user[email]" %>
       <div class="col-xs-10">
         <%= f.text_field :email, :class => "form-control"  %>
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <%= f.label :firstname, :class => "col-xs-2 col-form-label", :for => "user[firstname]" %>
       <div class="col-xs-10">
         <%= f.text_field :firstname, :class => "form-control"  %>
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <%= f.label :lastname, :class => "col-xs-2 col-form-label", :for => "user[lastname]" %>
       <div class="col-xs-10">
         <%= f.text_field :lastname, :class => "form-control"  %>
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <%= f.label :access_level, :class => "col-xs-2 col-form-label", :for => "user[lastname]" %>
       <div class="col-xs-10">
           <%= f.select(:access_level, options_for_select(User.access_levels.keys.to_a, user.access_level), {}, { :class => "form-control"}) %>

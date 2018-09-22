@@ -1,11 +1,11 @@
 <h3>Info</h3>
 <div class="card " style="margin-top:10px;">
-  <div class="card-header text-xs-center">
+  <div class="card-header text-center">
     Vendor
   </div>
   <div class="card-block">
 
-    <div class="form-group row">
+    <div class="form-group">
       <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
       <div class="col-xs-10">
         <label class="form-control" id="example-text-input"><%= @vendor.title %></label>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <label for="example-text-input" class="col-xs-2 col-form-label">Link</label>
 
       <div class="col-xs-10  ">
@@ -22,12 +22,12 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <label class="col-xs-2 " for="vendor[showtoall]">Show To </label>
 
       <div class="col-xs-10">
         <%= @vendor.showto %>
-        
+
       </div>
     </div>
 
@@ -40,7 +40,7 @@
 
 
 
-  <div class="card-footer text-muted text-xs-center">
+  <div class="card-footer text-muted text-center">
     <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
     <%= link_to 'Back', vendors_path %>
   </div>
@@ -55,8 +55,8 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-6">
-    <div class="card  text-xs-center">
-      <div class="card-header text-xs-center">
+    <div class="card  text-center">
+      <div class="card-header text-center">
         Preview
       </div>
       <div class="card-block">
@@ -64,7 +64,7 @@
 
       </div>
 
-      <div class="card-footer text-muted text-xs-center">
+      <div class="card-footer text-muted text-center">
         <div class=""><%= link_to 'Remove Logo', remove_logo_vendor_path(@vendor) %></div>
       </div>
     </div>
@@ -72,7 +72,7 @@
 
   <div class=" col-xs-12 col-md-6">
     <div class="card">
-      <div class="card-header text-xs-center">
+      <div class="card-header text-center">
         Logo Form
       </div>
       <div class="card-block">
@@ -89,7 +89,7 @@
 
 
 <div class="card ">
-  <div class="card-header text-xs-center">
+  <div class="card-header text-center">
     Passwords Form
   </div>
   <div class="card-block">
@@ -103,7 +103,7 @@
 
 
 <div class="card ">
-  <div class="card-header text-xs-center">
+  <div class="card-header text-center">
     Vendor Logon form
   </div>
   <div class="card-block">
