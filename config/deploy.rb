@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.0'
+lock "~> 3.11"
 
 set :application, 'mypuhsd'
 set :repo_url, 'git@github.com:puhsd/mypuhsd.git'
