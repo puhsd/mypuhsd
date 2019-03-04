@@ -12,7 +12,7 @@ class LoginController < ApplicationController
   end
 
   def loginScreen
-    redirect_to('/auth/google_oauth2')
+    # redirect_to('/auth/google_oauth2')
   end
 
 

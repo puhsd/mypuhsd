@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   end
 
 
-  get 'login', to: 'login#index'
-
 
   resources :users do
     get 'import', :on => :collection
@@ -21,7 +19,9 @@ Rails.application.routes.draw do
   resources :vendors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  get 'login', to: 'sessions#create',  as: :create_login
+
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 

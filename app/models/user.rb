@@ -87,13 +87,13 @@ class User < ApplicationRecord
   end
 
 
-  def self.from_omniauth(auth)
+  def self.google_sign_in(auth)
 
 
-		user = User.find_by(email: auth.info.email)
+		user = User.find_by(email: auth.email_address)
 
     if user == nil then
-      user = User.import_from_ldap(auth.info.email.split("@").first)
+      user = User.import_from_ldap(auth.email_address.split("@").first)
     end
 
 

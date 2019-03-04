@@ -37,7 +37,7 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.3.1'
+set :rbenv_ruby, '2.5.3'
 set :bundle_binstubs, nil
 
 namespace :deploy do
