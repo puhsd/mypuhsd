@@ -2,7 +2,7 @@ module Api
   module V1
     class PasswordsController < ApplicationController # Api::BaseController
       http_basic_authenticate_with name: "admin", password: ENV["API_SECRET"]
-      skip_before_filter  :verify_authenticity_token
+      skip_before_action  :verify_authenticity_token
 
       def index
         # @passwords = Password.all.limit(100)
