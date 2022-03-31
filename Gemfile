@@ -45,7 +45,7 @@ gem 'friendly_id', '~> 5.2.4'
 
 group :development, :test do
   # Use Puma as the app server
-  gem 'puma', '~> 3.0'
+  gem 'puma', '~> 5.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
